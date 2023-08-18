@@ -4,10 +4,14 @@ import os
 import argparse
 import shutil
 
+# fourcc codec options: HEVC, H264, HEVC, XVID, MJPG, DVIX, VP90, AV01
+# H264 is the most compatible however may not be available to python-opencv due to licensing
+# For H264, install OpenCV using conda (conda install -c conda-forge opencv) 
 
 def video_to_mp4(
-    input, output, fps: int = 0, frame_size: tuple = (), fourcc: str = "H264"
+    input, output, fps: int = 0, frame_size: tuple = (), fourcc: str = "XVID"
 ):
+
     print(f"Converting video: {input}")
     vidcap = cv2.VideoCapture(input)
     if not fps:
