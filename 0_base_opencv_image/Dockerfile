@@ -40,7 +40,7 @@ RUN cd \
 	&& mkdir build \
 	&& cd build \
 	&& cmake -D WITH_FFMPEG=ON -D WITH_GSTREAMER=ON .. \
-	&& make -j6 \
+	&& make -j8 \
 	&& make install \
 	&& cd \
 	&& rm $OPENCV_VERSION.zip \

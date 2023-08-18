@@ -1,7 +1,7 @@
 FROM reidm512/opencv:1.0
 
 # Add our own code.
-ADD image_flattener.py /image_flattener.py
+ADD video_mp4_converter.py /video_mp4_converter.py
 ADD requirements.txt /requirements.txt
 
 #ENV OPENCV_LOG_LEVEL=debug
