@@ -1,6 +1,6 @@
 ## About
 
-This example intakes videos and outputs frames. If the videos are not in `.jpg` format, they are converted by the `video_mp4_converter` pipeline before being passed to the `image_flattener` pipeline. 
+This example intakes videos and outputs frames. If the videos are not in `.mp4` format (e.g, `.mov  `), they are converted by the `video_mp4_converter` pipeline before being passed to the `image_flattener` pipeline. 
 
 ## V2
 
