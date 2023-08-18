@@ -1,6 +1,10 @@
 ## About
 
-This example intakes videos and outputs traced frames. If the videos are not in `.jpg` format, they are converted by the `video_mp4_converter` pipeline before being passed to the `image_flattener` pipeline. The `image_flattener` pipeline then outputs the traced frames to the `output` repo.
+This example intakes videos and outputs frames. If the videos are not in `.jpg` format, they are converted by the `video_mp4_converter` pipeline before being passed to the `image_flattener` pipeline. 
+
+## V2
+
+The `image_flattener` pipeline will then handover the frames to the base opencv tutorial pipelines for tracing
 
 
 ## How to Run This Example 
