@@ -22,14 +22,15 @@ def make_edges(image, output_path):
         print(f"Error processing image: {image}")
         print(f"Error details: {e}")
 
-def process_image_files(input_path, output_path):
-    for dirpath, dirs, files in os.walk(input_path):
-        total = len(files)
-        current = 0
-        for file in files:
-            current += 1
-            print (f"Processing {file}, #{current} of {total}")
-            make_edges(os.path.join(dirpath, file), output_path)
+def process_image_files(input_paths, output_path):
+    for input_path in input_paths:
+        for dirpath, dirs, files in os.walk(input_path):
+            total = len(files)
+            current = 0
+            for file in files:
+                current += 1
+                print (f"Processing {file}, #{current} of {total}")
+                make_edges(os.path.join(dirpath, file), output_path)
 
 def main():
     parser = argparse.ArgumentParser(
@@ -40,9 +41,11 @@ def main():
     parser.add_argument('-o', '--output', required=True, help='Output image directory')
     args = parser.parse_args()
 
-    if not os.path.exists(args.input):
-        print("Input directory does not exist.")
-        return
+    for input_path in args.input:
+        if not os.path.exists(input_path):
+            print(f"Input directory does not exist: {input_path}")
+            return
+        
     if not os.path.exists(args.output):
         os.makedirs(args.output)
 

@@ -49,6 +49,12 @@ def main():
     parser.add_argument('-o', '--output', required=True, help='Output image directory')
     args = parser.parse_args()
 
+    if not os.path.exists(args.input):
+        print("Input directory does not exist.")
+        return
+    if not os.path.exists(args.output):
+        os.makedirs(args.output)
+
     print(f"Input: {args.input}")
     print(f"Output: {args.output}")
     print("======================")

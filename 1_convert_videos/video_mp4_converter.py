@@ -4,10 +4,6 @@ import os
 import argparse
 import shutil
 
-# fourcc codec options: HEVC, H264, HEVC, XVID, MJPG, DVIX, VP90, AV01
-# H264 is the most compatible however may not be available to python-opencv due to licensing
-# For H264, install OpenCV using conda (conda install -c conda-forge opencv) 
-
 def video_to_mp4(
     input, output, fps: int = 0, frame_size: tuple = (), fourcc: str = "XVID"
 ):
@@ -43,20 +39,19 @@ def process_video_files(input_path, output_path):
         for file in files:
             file_path = os.path.join(root, file)
 
-            # add a 0 to the file name if it doesn't have one
-            if file[-5] != '0':
-                os.rename(file_path, file_path[:-4] + '0' + file_path[-4:])
-                file_path = os.path.join(root, file[:-4] + '0' + file[-4:])
+            # Skip non-video files
+            if not file_path.lower().endswith(('.mp4', '.avi', '.mov')):
+                continue
 
-            # if the file is not an mp4, convert it
-            if pathlib.Path(file_path).suffix.lower() != '.mp4':
+            # Convert video files to MP4
+            if file_path.lower().endswith(('.avi', '.mov')):
                 base_file = os.path.splitext(file)[0]
                 out_path = os.path.join(output_path, base_file + ".mp4")
-                new_video = video_to_mp4(file_path, output=out_path)
-                print(new_video)
+                video_to_mp4(file_path, output=out_path)
+                print(f"Converted: {file} to {out_path}")
                 
             else:
-                # output the file as is
+                # Copy existing MP4 files
                 out_path = os.path.join(output_path, file)
                 print(f"Copying: {file} to {out_path}")
                 shutil.copy(file_path, out_path)
@@ -65,11 +60,17 @@ def process_video_files(input_path, output_path):
 def main():
     parser = argparse.ArgumentParser(
         prog='convert_to_mp4.py',
-        description='Convert non MP4 videos to MP4'
+        description='Convert non-MP4 videos to MP4'
     )
     parser.add_argument('-i', '--input', required=True, help='Input video directory')
     parser.add_argument('-o', '--output', required=True, help='Output video directory')
     args = parser.parse_args()
+
+    if not os.path.exists(args.input):
+        print("Input directory does not exist.")
+        return
+    if not os.path.exists(args.output):
+        os.makedirs(args.output)
 
     print(f"Input: {args.input}")
     print(f"Output: {args.output}")

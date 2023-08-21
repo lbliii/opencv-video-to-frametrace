@@ -3,7 +3,7 @@ pipeline:
   name: video_mp4_converter
 input:
   pfs:
-    repo: raw_videos
+    repo: raw_videos_and_images
     glob: "/*"
 transform:
   image: lbliii/video_mp4_converter:1.0.14
@@ -11,9 +11,9 @@ transform:
     - python3
     - /video_mp4_converter.py
     - --input
-    - /pfs/raw_videos/
+    - /pfs/raw_videos_and_images/
     - --output
     - /pfs/out/
 
 
-# docker buildx build --platform linux/amd64 -t lbliii/video_mp4_converter:1.0.15 --push .
+# docker buildx build --platform linux/amd64 -t lbliii/video_mp4_converter:1.0.14 --push .

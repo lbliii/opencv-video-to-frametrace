@@ -9,7 +9,7 @@ gh repo clone lbliii/opencv-video-to-frametrace
 cd opencv-video-to-frametrace
 pachctl create project video-to-frame-traces
 pachctl config update context --project video-to-frame-traces
-pachctl create repo raw_videos
+pachctl create repo raw_videos_and_images
 pachctl create pipeline -f 1_convert_videos/video_mp4_converter.yaml 
 pachctl create pipeline -f 2_flatten_images/image_flattener.yaml
 pachctl create pipeline -f 3_trace_images/image_tracer.yaml
@@ -22,10 +22,10 @@ pachctl create pipeline -f 3_trace_images/image_tracer.yaml
    pachctl create project video-to-frame-traces
    pachctl config update context --project video-to-frame-traces
    ```
-2. Create a repo named `raw_videos`:
+2. Create a repo named `raw_videos_and_images`:
    
    ```s
-   pachctl create repo raw_videos
+   pachctl create repo raw_videos_and_images
    ```
 3. Create the video converter pipeline:
    
