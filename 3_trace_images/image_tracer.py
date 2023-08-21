@@ -41,19 +41,21 @@ def main():
     parser.add_argument('-o', '--output', required=True, help='Output image directory')
     args = parser.parse_args()
 
+    print(f"Input: {args.input}")
+    print(f"Output: {args.output}")
+    print("======================")
+
     for input_path in args.input:
         if not os.path.exists(input_path):
             print(f"Input directory does not exist: {input_path}")
         else:
             print(f"Processing images in: {input_path}")
+            
             process_image_files(input_path, args.output)
-        
-    if not os.path.exists(args.output):
-        os.makedirs(args.output)
+    
+    print("Done.")
+    return
 
-    print(f"Input: {args.input}")
-    print(f"Output: {args.output}")
-    print("======================")
 
 if __name__ == "__main__":
     main()
