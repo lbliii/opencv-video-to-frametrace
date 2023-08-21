@@ -2,10 +2,11 @@
 
 This pipeline example uses OpenCV to convert videos and images into edge-detected frames. 
 
+![pipeline](/pipeline.svg)
 
 
-
-This example intakes videos and outputs edge-detected frames. If the videos are not in `.mp4` format (e.g, `.mov  `), they are converted by the `video_mp4_converter` pipeline before being passed to the `image_flattener` pipeline. Otherwise, they are passed directly to the `image_flattener` pipeline.
+- If the videos are not in `.mp4` format (e.g, `.mov  `), they are converted by the `video_mp4_converter` pipeline before being passed to the `image_flattener` pipeline. Otherwise, they are passed directly to the `image_flattener` pipeline.
+- Images from the `image_flattener` output and `raw_videos_and_images` repo are processed by the `edge-detector` pipeline.
 
 ## Quickstart 
 
