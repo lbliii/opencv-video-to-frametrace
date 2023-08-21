@@ -8,7 +8,7 @@ This pipeline example uses OpenCV to convert videos and images into edge-detecte
 ### Reference Image
 
 <p align="center">
-![pipeline](/pipeline.svg)
+   <img src="/pipeline.svg" width="600">
 </p>
 
 ## Quickstart 
