@@ -3,8 +3,8 @@ pipeline:
 description: A pipeline that performs image edge detection by using the OpenCV library.
 input:
   cross:
-    - pfs: raw_videos_and_images
-      repo: 
+    - pfs:
+      repo: raw_videos_and_images
       glob: "/*"
 
     - pfs:
