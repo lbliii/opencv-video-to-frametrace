@@ -19,7 +19,7 @@ def flatten_video(vid_path, out_path, base_file):
         ret, frame = video.read()
 
         if ret:
-            name = os.path.join(out_path, f'frame-{current_frame:010d}.jpg')
+            name = os.path.join(out_path, f'{base_file}-frame-{current_frame:010d}.jpg')
             cv2.imwrite(name, frame)
             current_frame += 1
         else:

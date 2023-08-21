@@ -5,7 +5,7 @@ input:
   cross:
     - pfs:
         repo: raw_videos_and_images
-        glob: "/*.{png|*.jpg|*.jpeg}"
+        glob: "/*.{png,jpg,jpeg}"
     - pfs:
         repo: image_flattener
         glob: "/*"

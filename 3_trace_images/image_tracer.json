@@ -8,7 +8,7 @@
         {
           "pfs": {
             "repo": "raw_videos_and_images",
-            "glob": "/**"
+            "glob": "/*.{png,jpg,jpeg}"
           }
         },
         {
