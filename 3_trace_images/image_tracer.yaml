@@ -4,12 +4,11 @@ description: A pipeline that performs image edge detection by using the OpenCV l
 input:
   cross:
     - pfs:
-      repo: raw_videos_and_images
-      glob: "/*"
-
+        repo: raw_videos_and_images
+        glob: "/*.{png|*.jpg|*.jpeg}"
     - pfs:
-      repo: image_flattener
-      glob: "/*"
+        repo: image_flattener
+        glob: "/*"
 transform:
   image: lbliii/image_tracer:1.0.1
   cmd:

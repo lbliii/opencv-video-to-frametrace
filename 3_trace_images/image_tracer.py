@@ -22,12 +22,12 @@ def make_edges(image, output_path):
         print(f"Error processing image: {image}")
         print(f"Error details: {e}")
 
-def process_image_files(input_paths, output_path):
-    for input_path in input_paths:
+def process_image_files(input_path, output_path):
         for dirpath, dirs, files in os.walk(input_path):
+            # We don't need to filter videos because it's done for us in the glob pattern in the pps. 
             total = len(files)
             current = 0
-            for file in files:
+            for file in files:                
                 current += 1
                 print (f"Processing {file}, #{current} of {total}")
                 make_edges(os.path.join(dirpath, file), output_path)
@@ -37,14 +37,16 @@ def main():
         prog='image_tracer.py',
         description='Trace Images'
     )
-    parser.add_argument('-i', '--input', required=True, help='Input image directory')
+    parser.add_argument('-i', '--input', nargs='+', required=True, help='Input image directory')
     parser.add_argument('-o', '--output', required=True, help='Output image directory')
     args = parser.parse_args()
 
     for input_path in args.input:
         if not os.path.exists(input_path):
             print(f"Input directory does not exist: {input_path}")
-            return
+        else:
+            print(f"Processing images in: {input_path}")
+            process_image_files(input_path, args.output)
         
     if not os.path.exists(args.output):
         os.makedirs(args.output)
@@ -52,8 +54,6 @@ def main():
     print(f"Input: {args.input}")
     print(f"Output: {args.output}")
     print("======================")
-
-    process_image_files(args.input, args.output)
 
 if __name__ == "__main__":
     main()

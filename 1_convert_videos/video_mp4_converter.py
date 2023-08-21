@@ -41,7 +41,8 @@ def process_video_files(input_path, output_path):
 
             # Skip non-video files
             if not file_path.lower().endswith(('.mp4', '.avi', '.mov')):
-                continue
+                print(f"Skipping: {file_path}")
+                return
 
             # Convert video files to MP4
             if file_path.lower().endswith(('.avi', '.mov')):

@@ -1,0 +1,35 @@
+{
+    "pipeline": {
+      "name": "edges"
+    },
+    "description": "A pipeline that performs image edge detection by using the OpenCV library.",
+    "input": {
+      "cross": [
+        {
+          "pfs": {
+            "repo": "raw_videos_and_images",
+            "glob": "/**"
+          }
+        },
+        {
+          "pfs": {
+            "repo": "image_flattener",
+            "glob": "/**"
+          }
+        }
+      ]
+    },
+    "transform": {
+      "image": "lbliii/image_tracer:1.0.1",
+      "cmd": [
+        "python3",
+        "/image_tracer.py",
+        "--input",
+        "/pfs/raw_videos_and_images",
+        "/pfs/image_flattener",
+        "--output",
+        "/pfs/out/"
+      ]
+    }
+  }
+  
