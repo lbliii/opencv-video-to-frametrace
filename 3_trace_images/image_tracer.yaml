@@ -2,7 +2,7 @@ pipeline:
   name: edges
 description: A pipeline that performs image edge detection by using the OpenCV library.
 input:
-  cross:
+  union:
     - pfs:
         repo: raw_videos_and_images
         glob: "/*.{png,jpg,jpeg}"
