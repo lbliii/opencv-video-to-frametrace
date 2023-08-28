@@ -2,7 +2,7 @@
 
 This pipeline example uses OpenCV to convert videos and images into edge-detected frames. 
 
-- If the videos are not in `.mp4` format (e.g, `.mov  `), they are converted by the `video_mp4_converter` pipeline before being passed to the `image_flattener` pipeline. Otherwise, they are passed directly to the `image_flattener` pipeline.
+- If the videos are not in `.mp4` format (e.g, `.mov`), they are converted by the `video_mp4_converter` pipeline before being passed to the `image_flattener` pipeline. Otherwise, they are passed directly to the `image_flattener` pipeline.
 - Images from the `image_flattener` output and `raw_videos_and_images` repo are processed by the `edge-detector` pipeline.
 
 ### Reference Image
@@ -22,6 +22,7 @@ pachctl create repo raw_videos_and_images
 pachctl create pipeline -f 1_convert_videos/video_mp4_converter.yaml 
 pachctl create pipeline -f 2_flatten_images/image_flattener.yaml
 pachctl create pipeline -f 3_trace_images/image_tracer.yaml
+pachctl create pipeline -f 4_gif_images/movie_gifer.yaml
 ```
 
 ## Walkthrough

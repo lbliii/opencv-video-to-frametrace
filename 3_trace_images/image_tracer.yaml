@@ -1,5 +1,5 @@
 pipeline:
-  name: edge-detector
+  name: image_tracer
 description: A pipeline that performs image edge detection by using the OpenCV library.
 input:
   union:
@@ -10,7 +10,7 @@ input:
         repo: image_flattener
         glob: "/*"
 transform:
-  image: lbliii/image_tracer:1.0.1
+  image: lbliii/image_tracer:1.0.8
   cmd:
     - python3
     - /image_tracer.py
@@ -21,4 +21,4 @@ transform:
     - /pfs/out/
 
 
-# docker buildx build --platform linux/amd64 -t lbliii/image_tracer:1.0.1 --push .
+# docker buildx build --platform linux/amd64 -t lbliii/image_tracer:1.0.8 --push .
