@@ -8,7 +8,7 @@ input:
 
 
 transform:
-  image: lbliii/content_montager:1.0.61
+  image: lbliii/content_montager:1.0.62
   cmd:
     - python3
     - /content_montager.py
