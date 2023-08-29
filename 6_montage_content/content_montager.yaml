@@ -1,0 +1,22 @@
+pipeline:
+  name: content_montager
+  description: A pipeline that creates a static HTML collage.
+input:
+  pfs:
+    glob: "/"
+    repo: content_shuffler
+
+
+transform:
+  image: lbliii/content_montager:1.0.61
+  cmd:
+    - python3
+    - /content_montager.py
+    - --input
+    - /pfs/content_shuffler
+    - --output
+    - /pfs/out/
+
+
+# docker buildx build --platform linux/amd64 -t lbliii/content_montager:1.0.60 --push .
+

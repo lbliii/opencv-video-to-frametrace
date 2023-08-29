@@ -5,10 +5,10 @@ input:
   union:
     - pfs:
         repo: image_flattener
-        glob: "/*"
+        glob: "/*/"
     - pfs:
         repo: image_tracer
-        glob: "/*"
+        glob: "/*/"
 transform:
   image: lbliii/movie_gifer:1.0.5
   cmd:

@@ -1,0 +1,30 @@
+pipeline:
+  name: content_shuffler
+  description: A pipeline that collapses our inputs into one datum for the montager.
+input:
+  union:
+    - pfs:
+        glob: "/"
+        repo: movie_gifer
+    - pfs:
+        glob: "/*.{png,jpg,jpeg}"
+        repo: raw_videos_and_images
+    - pfs:
+        glob: "/*.{png,jpg,jpeg}"
+        repo: image_tracer
+
+transform:
+  image: lbliii/content_shuffler:1.0.0
+  cmd:
+    - python3
+    - /content_shuffler.py
+    - --input
+    - /pfs/movie_gifer
+    - /pfs/raw_videos_and_images
+    - /pfs/image_tracer
+    - --output
+    - /pfs/out/
+
+
+# docker buildx build --platform linux/amd64 -t lbliii/content_shuffler:1.0.0 --push .
+

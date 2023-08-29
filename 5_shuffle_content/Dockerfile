@@ -1,0 +1,6 @@
+FROM python:3.8-slim
+
+ADD content_shuffler.py /content_shuffler.py
+ADD requirements.txt /requirements.txt
+
+RUN pip3 install -r requirements.txt
