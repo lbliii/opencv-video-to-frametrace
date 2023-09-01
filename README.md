@@ -23,7 +23,8 @@ pachctl create pipeline -f 1_convert_videos/video_mp4_converter.yaml
 pachctl create pipeline -f 2_flatten_images/image_flattener.yaml
 pachctl create pipeline -f 3_trace_images/image_tracer.yaml
 pachctl create pipeline -f 4_gif_images/movie_gifer.yaml
-pachctl create pipeline -f 5_montage_content/content_montager.yaml
+pachctl create pipeline -f 5_shuffle_content/content_shuffler.yaml
+pachctl create pipeline -f 6_montage_content/content_montager.yaml
 ```
 
 ## Walkthrough
