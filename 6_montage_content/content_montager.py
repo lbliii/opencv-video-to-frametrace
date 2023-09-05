@@ -6,7 +6,7 @@ import shutil
 html_template = """
 <html>
 <head>
-<title>Content Montage</title>
+<title>Content Collage</title>
 <style>
   #collage-container {
     display: flex;
@@ -28,10 +28,10 @@ html_template = """
 <h1>Content Montage</h1>
 <div id="collage-container">
 <div id="originals">
-<h2>Originals</h2>
+<h2>Original</h2>
 </div>
 <div id="edges">
-<h2>Collage</h2>
+<h2>Edges</h2>
 </div>
 </div>
 </body>
