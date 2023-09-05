@@ -16,6 +16,8 @@ This pipeline example uses OpenCV to convert videos and images into edge-detecte
 
 ## Quickstart 
 
+### Create DAG
+
 ```s
 gh repo clone lbliii/opencv-video-to-frametrace
 cd opencv-video-to-frametrace
@@ -29,10 +31,10 @@ pachctl create pipeline -f 4_gif_images/movie_gifer.yaml
 pachctl create pipeline -f 5_shuffle_content/content_shuffler.yaml
 pachctl create pipeline -f 6_collage_content/content_collager.yaml
 ```
+### Upload Content
 
 ```s
 pachctl put file raw_videos_and_images@master:liberty.png -f https://raw.githubusercontent.com/pachyderm/docs-content/main/images/opencv/liberty.jpg
-
 pachctl put file raw_videos_and_images@master:robot.png -f https://raw.githubusercontent.com/pachyderm/docs-content/main/images/opencv/robot.jpg
 ```
 ### Example Output
