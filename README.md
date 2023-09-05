@@ -65,13 +65,14 @@ We want to make sure that our DAG can handle videos in multiple formats, so firs
 
 The converted videos will be made available to the next pipeline in the DAG via the `video_mp4_converter` repo by declaring in the user code to save the converted images to `/pfs/out/`. 
 
+- [See User Code](./1_convert_videos/video_mp4_converter.py)
+- [See Pipeline Spec](./1_convert_videos/video_mp4_converter.yaml)
+
+---
+
 ```s
 pachctl create pipeline -f 1_convert_videos/video_mp4_converter.yaml 
 ```
---- 
-
-- [See User Code](./1_convert_videos/video_mp4_converter.py)
-- [See Pipeline Spec](./1_convert_videos/video_mp4_converter.yaml)
 
 ### 4. Create the Image Flattener Pipeline
 
