@@ -105,8 +105,8 @@ pachctl create pipeline -f 3_trace_images/image_tracer.yaml
 ### 6. Create the Gif Pipeline
 
 Next, we'll create a pipeline that will create two gifs:
-   - a gif of the original video's flattened frames (from the `image_flattener` output repo)
-   - a gif of the video's traced frames (from the `image_tracer` output repo)
+  1. a gif of the original video's flattened frames (from the `image_flattener` output repo)
+  2. a gif of the video's traced frames (from the `image_tracer` output repo)
 
 - [See User Code](./4_gif_images/movie_gifer.py)
 - [See Pipeline Spec](./4_gif_images/movie_gifer.yaml)
@@ -145,7 +145,7 @@ Finally, we'll create a pipeline that will create a static html page that you ca
 pachctl create pipeline -f 6_collage_content/content_collager.yaml
 ```
 
-### 6. Add Videos and Images 
+### 9. Add Videos and Images 
 
 Now that we have our DAG set up, we can add some videos and images to the `raw_videos_and_images` repo to see the pipeline in action.
 
