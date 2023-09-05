@@ -68,7 +68,10 @@ The converted videos will be made available to the next pipeline in the DAG via 
 ```s
 pachctl create pipeline -f 1_convert_videos/video_mp4_converter.yaml 
 ```
+--- 
 
+- [See User Code](./1_convert_videos/video_mp4_converter.py)
+- [See Pipeline Spec](./1_convert_videos/video_mp4_converter.yaml)
 
 ### 4. Create the Image Flattener Pipeline
 
