@@ -25,7 +25,7 @@ html_template = """
 </style>
 </head>
 <body>
-<h1>Content Montage</h1>
+<h1>Content collage</h1>
 <div id="collage-container">
 <div id="originals">
 <h2>Original</h2>
@@ -96,7 +96,7 @@ def process_content(input_path, output_path):
 
 def main():
     parser = argparse.ArgumentParser(
-        prog='content_montager.py',
+        prog='content_collager.py',
         description='Convert images and gifs into a collage'
     )
     parser.add_argument('-i', '--input', nargs='+', required=True, help='Input image directory')

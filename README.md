@@ -1,12 +1,12 @@
 ## About
 
-This pipeline example uses OpenCV to convert videos and images into edge-detected frames. 
+This pipeline example uses OpenCV to convert videos and images into edge-detected frames. The final output is a `/collage` folder containing a static html page that you can download and open to view the original and traced content side-by-side.
 
 - If the videos are not in `.mp4` format (e.g, `.mov`), they are converted by the `video_mp4_converter` pipeline before being passed to the `image_flattener` pipeline. Otherwise, they are passed directly to the `image_flattener` pipeline.
 - Images from the `image_flattener` output repo and `raw_videos_and_images` input repo are processed by the `image-tracer` pipeline.
-- Frames from videos are combined by the `movie_gifer` pipeline to create a gif for both the original and traced versions.
-- The original and traced content is shuffled into two folders, `edges` and `originals`, by the `content_shuffler` pipeline.
-- The shuffled content is then used by the `content_montager` pipeline to create a montage of the original and traced content using a static html page that you can download and open.
+- Frames from the `image_flattener` pipeline are combined by the `movie_gifer` pipeline to create gifs.
+- All content is re-shuffled into two folders (`edges` and `originals`) by the `content_shuffler` pipeline.
+- The shuffled content is then used by the `content_collager` pipeline to create a collage of the original and traced content using a static html page that you can download and open.
 
 ### Reference Image
 
@@ -27,7 +27,7 @@ pachctl create pipeline -f 2_flatten_images/image_flattener.yaml
 pachctl create pipeline -f 3_trace_images/image_tracer.yaml
 pachctl create pipeline -f 4_gif_images/movie_gifer.yaml
 pachctl create pipeline -f 5_shuffle_content/content_shuffler.yaml
-pachctl create pipeline -f 6_montage_content/content_montager.yaml
+pachctl create pipeline -f 6_collage_content/content_collager.yaml
 ```
 ### Example Output
 
@@ -40,7 +40,7 @@ pachctl create pipeline -f 6_montage_content/content_montager.yaml
 
 ### 1. Create a Project 
 
-By default, when you first start up an instance, the `default` project is attached to your active context. Create a new project and set attach it to your active pachctl context to avoid having to specify the project name (e.g., `--project video-to-frame-traces` ) in each command. 
+By default, when you first start up an instance, the `default` project is attached to your active context. Create a new project and set the project to your active pachctl context to avoid having to specify the project name (e.g., `--project video-to-frame-traces`) in each command. 
 
 ```s
 pachctl create project video-to-frame-traces
@@ -80,7 +80,7 @@ pachctl create pipeline -f 2_flatten_images/image_flattener.yaml
 
 ### 5. Create the Image Tracing Pipeline: 
 
-Finally, we'll create a pipeline that will trace the edges of the images. This pipeline will take a `union` of two inputs:
+Next, we'll create a pipeline that will trace the edges of the images. This pipeline will take a `union` of two inputs:
 - the `image_flattener` repo, which contains the flattened images from the previous pipeline
 - the `raw_videos_and_images` repo, which contains the original images that didn't need to be processed
     
@@ -88,8 +88,39 @@ Finally, we'll create a pipeline that will trace the edges of the images. This p
 pachctl create pipeline -f 3_trace_images/image_tracer.yaml
 ```
 
+### 6. Create the Gif Pipeline
+
+Next, we'll create a pipeline that will create two gifs:
+   - a gif of the original video's flattened frames (from the `image_flattener` output repo)
+   - a gif of the video's traced frames (from the `image_tracer` output repo)
+
+```s
+pachctl create pipeline -f 4_gif_images/movie_gifer.yaml
+```
+
+### 7. Create the Content Shuffler Pipeline
+
+Next, we'll create a pipeline that will re-shuffle the content from the previous pipelines into two folders:
+   - `edges`: contains the traced images and gifs
+   - `originals`: contains the original images and gifs
+
+This helps us keep the content organized for easy access and manipulation in the next pipeline.
+
+```s
+pachctl create pipeline -f 5_shuffle_content/content_shuffler.yaml
+```
+
+### 8. Create the Content Collager Pipeline
+
+Finally, we'll create a pipeline that will create a static html page that you can download and open to view the original and traced content side-by-side.
+
+```s
+pachctl create pipeline -f 6_collage_content/content_collager.yaml
+```
+
 ### 6. Add Videos and Images 
 
+Now that we have our DAG set up, we can add some videos and images to the `raw_videos_and_images` repo to see the pipeline in action.
 
 #### Videos (Coming Soon)
 ```s

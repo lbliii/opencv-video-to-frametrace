@@ -23,7 +23,7 @@ def shuffle_content(input_path, output_path):
 
 def main():
     parser = argparse.ArgumentParser(
-        prog='content_montager.py',
+        prog='content_collager.py',
         description='Convert images and gifs into a collage'
     )
     parser.add_argument('-i', '--input', nargs='+', required=True, help='Input image directory')
