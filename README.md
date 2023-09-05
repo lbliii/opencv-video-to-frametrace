@@ -78,6 +78,11 @@ pachctl create pipeline -f 1_convert_videos/video_mp4_converter.yaml
 
 Next, we'll create a pipeline that will flatten the frames of the videos into individual `.png` images. Like the previous pipeline, the user code outputs the frames to `/pfs/out` so that the next pipeline in the DAG can access them in the `image_flattener` repo. 
 
+- [See User Code](./2_flatten_images/image_flattener.py)
+- [See Pipeline Spec](./2_flatten_images/image_flattener.yaml)
+
+---
+
 ```s
 pachctl create pipeline -f 2_flatten_images/image_flattener.yaml
 ```
@@ -88,6 +93,11 @@ Next, we'll create a pipeline that will trace the edges of the images. This pipe
 - the `image_flattener` repo, which contains the flattened images from the previous pipeline
 - the `raw_videos_and_images` repo, which contains the original images that didn't need to be processed
     
+- [See User Code](./3_trace_images/image_tracer.py)
+- [See Pipeline Spec](./3_trace_images/image_tracer.yaml)
+
+---
+
 ```s
 pachctl create pipeline -f 3_trace_images/image_tracer.yaml
 ```
@@ -97,6 +107,11 @@ pachctl create pipeline -f 3_trace_images/image_tracer.yaml
 Next, we'll create a pipeline that will create two gifs:
    - a gif of the original video's flattened frames (from the `image_flattener` output repo)
    - a gif of the video's traced frames (from the `image_tracer` output repo)
+
+- [See User Code](./4_gif_images/movie_gifer.py)
+- [See Pipeline Spec](./4_gif_images/movie_gifer.yaml)
+
+---
 
 ```s
 pachctl create pipeline -f 4_gif_images/movie_gifer.yaml
@@ -110,6 +125,9 @@ Next, we'll create a pipeline that will re-shuffle the content from the previous
 
 This helps us keep the content organized for easy access and manipulation in the next pipeline.
 
+- [See User Code](./5_shuffle_content/content_shuffler.py)
+- [See Pipeline Spec](./5_shuffle_content/content_shuffler.yaml)
+
 ```s
 pachctl create pipeline -f 5_shuffle_content/content_shuffler.yaml
 ```
@@ -117,6 +135,11 @@ pachctl create pipeline -f 5_shuffle_content/content_shuffler.yaml
 ### 8. Create the Content Collager Pipeline
 
 Finally, we'll create a pipeline that will create a static html page that you can download and open to view the original and traced content side-by-side.
+
+- [See User Code](./6_collage_content/content_collager.py)
+- [See Pipeline Spec](./6_collage_content/content_collager.yaml)
+
+---
 
 ```s
 pachctl create pipeline -f 6_collage_content/content_collager.yaml
