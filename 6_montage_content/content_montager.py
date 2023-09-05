@@ -7,10 +7,32 @@ html_template = """
 <html>
 <head>
 <title>Content Montage</title>
+<style>
+  #collage-container {
+    display: flex;
+  }
+
+  #originals,
+  #edges {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; 
+  }
+</style>
 </head>
 <body>
 <h1>Content Montage</h1>
 <div id="collage-container">
+<div id="originals">
+<h2>Originals</h2>
+</div>
+<div id="edges">
+<h2>Collage</h2>
+</div>
 </div>
 </body>
 </html>
@@ -33,11 +55,21 @@ def append_image_to_html_page(output_path, image_path):
         html_content = f.read()
 
     soup = BeautifulSoup(html_content, "html.parser")
-    collage_div = soup.find("div", id="collage-container")
+    # if the image path has the word "originals" in it, add it to the originals div
+    if "edges" in image_path:
+        originals_div = soup.find("div", id="edges")
+        if originals_div:
+            img_tag = soup.new_tag("img", src=image_path, width="300", style="display: block;")
+            originals_div.append(img_tag)
 
-    if collage_div:
-        img_tag = soup.new_tag("img", src=image_path, width="200", height="200")
-        collage_div.append(img_tag)
+        with open(index_path, "w") as f:
+            f.write(str(soup))
+    # otherwise, add it to the collage div
+    else:
+        collage_div = soup.find("div", id="originals")
+        if collage_div:
+            img_tag = soup.new_tag("img", src=image_path, width="300", style="display: block;")
+            collage_div.append(img_tag)
 
         with open(index_path, "w") as f:
             f.write(str(soup))

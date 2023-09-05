@@ -3,12 +3,15 @@
 This pipeline example uses OpenCV to convert videos and images into edge-detected frames. 
 
 - If the videos are not in `.mp4` format (e.g, `.mov`), they are converted by the `video_mp4_converter` pipeline before being passed to the `image_flattener` pipeline. Otherwise, they are passed directly to the `image_flattener` pipeline.
-- Images from the `image_flattener` output and `raw_videos_and_images` repo are processed by the `edge-detector` pipeline.
+- Images from the `image_flattener` output repo and `raw_videos_and_images` input repo are processed by the `image-tracer` pipeline.
+- Frames from videos are combined by the `movie_gifer` pipeline to create a gif for both the original and traced versions.
+- The original and traced content is shuffled into two folders, `edges` and `originals`, by the `content_shuffler` pipeline.
+- The shuffled content is then used by the `content_montager` pipeline to create a montage of the original and traced content using a static html page that you can download and open.
 
 ### Reference Image
 
 <p align="center">
-   <img src="/pipeline.svg" width="300">
+   <img src="/vid-to-frametrace.svg" width="400">
 </p>
 
 ## Quickstart 
@@ -26,6 +29,12 @@ pachctl create pipeline -f 4_gif_images/movie_gifer.yaml
 pachctl create pipeline -f 5_shuffle_content/content_shuffler.yaml
 pachctl create pipeline -f 6_montage_content/content_montager.yaml
 ```
+### Example Output
+
+<p align="center">
+   <img src="/final-output.gif" width="400">
+</p>
+
 
 ## Walkthrough
 

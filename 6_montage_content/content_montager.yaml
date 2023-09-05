@@ -8,7 +8,7 @@ input:
 
 
 transform:
-  image: lbliii/content_montager:1.0.62
+  image: lbliii/content_montager:1.0.64
   cmd:
     - python3
     - /content_montager.py
@@ -18,5 +18,5 @@ transform:
     - /pfs/out/
 
 
-# docker buildx build --platform linux/amd64 -t lbliii/content_montager:1.0.60 --push .
+# docker buildx build --platform linux/amd64 -t lbliii/content_montager:1.0.65 --push .
 
