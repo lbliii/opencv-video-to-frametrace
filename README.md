@@ -11,7 +11,7 @@ This pipeline example uses OpenCV to convert videos and images into edge-detecte
 ### Reference Image
 
 <p align="center">
-   <img src="/vid-to-frametrace.svg" width="400">
+   <img src="/vid-to-frametrace.svg" width="700">
 </p>
 
 ## Quickstart 
@@ -32,7 +32,7 @@ pachctl create pipeline -f 6_montage_content/content_montager.yaml
 ### Example Output
 
 <p align="center">
-   <img src="/final-output.gif" width="400">
+   <img src="/final-output.gif" width="700">
 </p>
 
 
