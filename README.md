@@ -11,7 +11,7 @@ This pipeline example uses OpenCV to convert videos and images into edge-detecte
 ### Reference Image
 
 <p align="center">
-   <img src="/vid-to-frametrace.svg" width="700">
+   <img src="/vid-to-frametrace.svg">
 </p>
 
 ## Quickstart 
