@@ -36,6 +36,7 @@ pachctl create pipeline -f 6_collage_content/content_collager.yaml
 ```s
 pachctl put file raw_videos_and_images@master:liberty.png -f https://raw.githubusercontent.com/pachyderm/docs-content/main/images/opencv/liberty.jpg
 pachctl put file raw_videos_and_images@master:robot.png -f https://raw.githubusercontent.com/pachyderm/docs-content/main/images/opencv/robot.jpg
+
 ```
 ### Example Output
 

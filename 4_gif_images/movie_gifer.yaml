@@ -19,6 +19,7 @@ transform:
     - /pfs/image_tracer
     - --output
     - /pfs/out/
+autoscaling: true
 
 
 # docker buildx build --platform linux/amd64 -t lbliii/movie_gifer:1.0.5 --push .

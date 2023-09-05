@@ -16,6 +16,7 @@ transform:
     - /pfs/content_shuffler
     - --output
     - /pfs/out/
+autoscaling: true
 
 
 # docker buildx build --platform linux/amd64 -t lbliii/content_collager:1.0.64 --push .
