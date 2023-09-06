@@ -1,0 +1,17 @@
+pipeline:
+  name: content_collager
+  description: A pipeline that creates a static HTML collage.
+input:
+  pfs:
+    glob: "/"
+    repo: content_shuffler
+transform:
+  image: lbliii/content_collager:1.0.64
+  cmd:
+    - python3
+    - /content_collager.py
+    - --input
+    - /pfs/content_shuffler
+    - --output
+    - /pfs/out/
+autoscaling: true

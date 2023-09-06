@@ -1,0 +1,16 @@
+pipeline:
+  name: image_flattener
+input:
+  pfs:
+    repo: video_mp4_converter
+    glob: "/*"
+transform:
+  image: lbliii/image_flattener:1.0.0
+  cmd:
+    - python3
+    - /image_flattener.py
+    - --input
+    - /pfs/video_mp4_converter
+    - --output
+    - /pfs/out/
+autoscaling: true

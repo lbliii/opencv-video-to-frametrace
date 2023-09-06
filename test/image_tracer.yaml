@@ -1,0 +1,22 @@
+pipeline:
+  name: image_tracer
+description: A pipeline that performs image edge detection by using the OpenCV library.
+input:
+  union:
+    - pfs:
+        repo: raw_videos_and_images
+        glob: "/*.{png,jpg,jpeg}"
+    - pfs:
+        repo: image_flattener
+        glob: "/*"
+transform:
+  image: lbliii/image_tracer:1.0.8
+  cmd:
+    - python3
+    - /image_tracer.py
+    - --input
+    - /pfs/raw_videos_and_images
+    - /pfs/image_flattener
+    - --output
+    - /pfs/out/
+autoscaling: true

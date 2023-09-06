@@ -1,0 +1,22 @@
+pipeline:
+  name: movie_gifer
+description: A pipeline that converts frames into a gif using the OpenCV library.
+input:
+  union:
+    - pfs:
+        repo: image_flattener
+        glob: "/*/"
+    - pfs:
+        repo: image_tracer
+        glob: "/*/"
+transform:
+  image: lbliii/movie_gifer:1.0.5
+  cmd:
+    - python3
+    - /movie_gifer.py
+    - --input
+    - /pfs/image_flattener
+    - /pfs/image_tracer
+    - --output
+    - /pfs/out/
+autoscaling: true

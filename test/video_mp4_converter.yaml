@@ -1,0 +1,16 @@
+pipeline:
+  name: video_mp4_converter
+input:
+  pfs:
+    repo: raw_videos_and_images
+    glob: "/*"
+transform:
+  image: lbliii/video_mp4_converter:1.0.14
+  cmd:
+    - python3
+    - /video_mp4_converter.py
+    - --input
+    - /pfs/raw_videos_and_images/
+    - --output
+    - /pfs/out/
+autoscaling: true
