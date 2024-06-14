@@ -1,6 +1,5 @@
 pipeline:
   name: movie_gifer
-description: A pipeline that converts frames into a gif using the OpenCV library.
 input:
   union:
     - pfs:
