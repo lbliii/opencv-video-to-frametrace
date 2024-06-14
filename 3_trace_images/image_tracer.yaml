@@ -5,22 +5,22 @@ input:
   union:
     - pfs:
         repo: raw_videos_and_images
-        name: images
+        name: tracer
         glob: "/*.{png,jpg,jpeg}"
     - pfs:
         repo: image_flattener
-        name: images
+        name: tracer
         glob: "/*"
 transform:
-  image: lbliii/image_tracer:1.0.8
+  image: lbliii/image_tracer:1.0.9
   cmd:
     - python3
     - /image_tracer.py
     - --input
-    - /pfs/images
+    - /pfs/tracer
     - --output
     - /pfs/out/
 autoscaling: true
 
 
-# docker buildx build --platform linux/amd64 -t lbliii/image_tracer:1.0.8 --push .
+# docker buildx build --platform linux/amd64 -t lbliii/image_tracer:1.0.9 --push .
