@@ -4,9 +4,11 @@ input:
   union:
     - pfs:
         repo: image_flattener
+        name: gifer
         glob: "/*/"
     - pfs:
         repo: image_tracer
+        name: gifer
         glob: "/*/"
 transform:
   image: lbliii/movie_gifer:1.0.5
@@ -14,8 +16,7 @@ transform:
     - python3
     - /movie_gifer.py
     - --input
-    - /pfs/image_flattener
-    - /pfs/image_tracer
+    - /pfs/gifer
     - --output
     - /pfs/out/
 autoscaling: true

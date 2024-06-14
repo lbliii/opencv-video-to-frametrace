@@ -5,9 +5,11 @@ input:
   union:
     - pfs:
         repo: raw_videos_and_images
+        name: images
         glob: "/*.{png,jpg,jpeg}"
     - pfs:
         repo: image_flattener
+        name: images
         glob: "/*"
 transform:
   image: lbliii/image_tracer:1.0.8
@@ -15,8 +17,7 @@ transform:
     - python3
     - /image_tracer.py
     - --input
-    - /pfs/raw_videos_and_images
-    - /pfs/image_flattener
+    - /pfs/images
     - --output
     - /pfs/out/
 autoscaling: true

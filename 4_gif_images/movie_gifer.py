@@ -63,7 +63,7 @@ def main():
 
     for input_path in args.input:
         if not os.path.exists(input_path):
-            print(f"Input directory does not exist: {input_path}")
+            print(f"Warning: The specified input directory '{input_path}' does not exist. Please check the path and try again.")
         else:
             print(f"Processing images in: {input_path}")
             process_image_directories(input_path, args.output)

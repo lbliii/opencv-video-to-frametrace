@@ -4,12 +4,15 @@ input:
   union:
     - pfs:
         glob: "/"
+        name: shuffler
         repo: movie_gifer
     - pfs:
         glob: "/*.{png,jpg,jpeg}"
+        name: shuffler
         repo: raw_videos_and_images
     - pfs:
         glob: "/*.{png,jpg,jpeg}"
+        name: shuffler
         repo: image_tracer
 
 transform:
@@ -18,9 +21,7 @@ transform:
     - python3
     - /content_shuffler.py
     - --input
-    - /pfs/movie_gifer
-    - /pfs/raw_videos_and_images
-    - /pfs/image_tracer
+    - /pfs/shuffler
     - --output
     - /pfs/out/
 autoscaling: true
