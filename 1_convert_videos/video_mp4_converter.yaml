@@ -6,7 +6,7 @@ input:
     repo: raw_videos_and_images
     glob: "/*"
 transform:
-  image: lbliii/video_mp4_converter:1.0.14
+  image: lbliii/video_mp4_converter:1.0.16
   cmd:
     - python3
     - /video_mp4_converter.py
@@ -17,4 +17,4 @@ transform:
 autoscaling: true
 
 
-# docker buildx build --platform linux/amd64 -t lbliii/video_mp4_converter:1.0.14 --push .
+# docker buildx build --platform linux/amd64 -t lbliii/video_mp4_converter:1.0.16 --push .

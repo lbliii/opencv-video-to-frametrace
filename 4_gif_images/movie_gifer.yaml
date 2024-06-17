@@ -4,21 +4,22 @@ input:
   union:
     - pfs:
         repo: image_flattener
+        name: gifer
         glob: "/*/"
     - pfs:
         repo: image_tracer
+        name: gifer
         glob: "/*/"
 transform:
-  image: lbliii/movie_gifer:1.0.5
+  image: lbliii/movie_gifer:1.0.6
   cmd:
     - python3
     - /movie_gifer.py
     - --input
-    - /pfs/image_flattener
-    - /pfs/image_tracer
+    - /pfs/gifer
     - --output
     - /pfs/out/
 autoscaling: true
 
 
-# docker buildx build --platform linux/amd64 -t lbliii/movie_gifer:1.0.5 --push .
+# docker buildx build --platform linux/amd64 -t lbliii/movie_gifer:1.0.6 --push .

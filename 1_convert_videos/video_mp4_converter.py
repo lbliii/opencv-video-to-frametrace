@@ -68,7 +68,7 @@ def main():
     args = parser.parse_args()
 
     if not os.path.exists(args.input):
-        print("Input directory does not exist.")
+        print(f"Warning: The specified input directory '{args.input}' does not exist. Please check the path and try again.")
         return
     if not os.path.exists(args.output):
         os.makedirs(args.output)
